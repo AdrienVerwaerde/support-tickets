@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { Prisma } from '@prisma/client';
 import { prisma } from '@/lib/prisma';
 import { getAuthFromRequest } from '@/lib/auth';
 import { ticketCreateSchema } from '@/lib/validators';
@@ -13,7 +14,7 @@ export async function GET(req: NextRequest) {
   const status = searchParams.get('status');
   const priority = searchParams.get('priority');
 
-  const where: any = {};
+  const where: Prisma.TicketWhereInput = {};
   if (status) where.status = status;
   if (priority) where.priority = priority;
 

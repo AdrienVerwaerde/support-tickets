@@ -4,6 +4,13 @@ import { useEffect, useState } from 'react';
 import { useRouter, useParams } from 'next/navigation';
 import Link from 'next/link';
 
+type User = {
+  id: string;
+  name: string;
+  email: string;
+  role: string;
+};
+
 type Ticket = {
   id: string;
   title: string;
@@ -23,7 +30,7 @@ export default function TicketPage() {
   const id = params.id as string;
 
   const [ticket, setTicket] = useState<Ticket | null>(null);
-  const [user, setUser] = useState<any>(null);
+  const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
