@@ -62,7 +62,7 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json({ ticket }, { status: 201 });
   } catch (error) {
-    console.error('Create ticket error:', error);
-    return NextResponse.json({ error: 'Internal error' }, { status: 500 });
+    const message = error instanceof Error ? error.message : 'Unknown error';
+    console.error(message);
   }
 }

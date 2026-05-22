@@ -10,10 +10,7 @@ export async function GET() {
       timestamp: new Date().toISOString(),
       uptime: process.uptime(),
     });
-  } catch (error) {
-    return NextResponse.json(
-      { status: 'error', message: 'Database unreachable' },
-      { status: 503 }
-    );
+  } catch {
+    return NextResponse.json({ status: 'error', message: 'Database unreachable' }, { status: 503 });
   }
 }

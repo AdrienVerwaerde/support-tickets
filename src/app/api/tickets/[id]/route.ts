@@ -94,7 +94,7 @@ export async function DELETE(
   try {
     await prisma.ticket.delete({ where: { id: params.id } });
     return NextResponse.json({ ok: true });
-  } catch (error) {
-    return NextResponse.json({ error: 'Not found' }, { status: 404 });
+  } catch {
+    return NextResponse.json({ status: 'error', message: 'Database unreachable' }, { status: 503 });
   }
 }
