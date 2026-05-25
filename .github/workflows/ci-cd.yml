@@ -117,15 +117,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Login to Azure
-        uses: azure/login@v2
-        with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
-
       - name: Login to Azure Container Registry
-        uses: azure/docker-login@v1
+        uses: docker/login-action@v3
         with:
-          login-server: ${{ secrets.ACR_LOGIN_SERVER }}
+          registry: ${{ secrets.ACR_LOGIN_SERVER }}
           username: ${{ secrets.ACR_USERNAME }}
           password: ${{ secrets.ACR_PASSWORD }}
 
@@ -135,9 +130,4 @@ jobs:
           docker tag ${{ secrets.ACR_LOGIN_SERVER }}/helpdesk:${{ github.sha }} ${{ secrets.ACR_LOGIN_SERVER }}/helpdesk:latest
           docker push ${{ secrets.ACR_LOGIN_SERVER }}/helpdesk:${{ github.sha }}
           docker push ${{ secrets.ACR_LOGIN_SERVER }}/helpdesk:latest
-
-      - name: Deploy to Azure Web App
-        uses: azure/webapps-deploy@v3
-        with:
-          app-name: ${{ secrets.AZURE_WEBAPP_NAME }}
-          images: ${{ secrets.ACR_LOGIN_SERVER }}/helpdesk:${{ github.sha }}
+          # ACR webhook auto-triggers Web App redeployment when :latest is pushed
