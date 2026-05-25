@@ -74,12 +74,13 @@ En résumé :`HEALTHCHECK` transforme le conteneur en composant observable et au
 
 ## Quelle est votre couverture finale (% statements / branches / functions) ?
 
-Fichier	Statements	Branches	Functions	Lines
-auth.ts	100%	100%	100%	100%
-permissions.ts	100%	100%	100%	100%
-validators.ts	100%	100%	100%	100%
-prisma.ts	0%	0%	0%	0%
-src/lib total	87.3%	92.3%	85.7%	87.3%
+| Fichier | Statements | Branches | Functions | Lines |
+|---|---|---|---|---|
+| auth.ts | 100% | 100% | 100% | 100% |
+| permissions.ts | 100% | 100% | 100% | 100% |
+| validators.ts | 100% | 100% | 100% | 100% |
+| prisma.ts | 0% | 0% | 0% | 0% |
+| **src/lib total** | **87.3%** | **92.3%** | **85.7%** | **87.3%** |
 
 ---
 
